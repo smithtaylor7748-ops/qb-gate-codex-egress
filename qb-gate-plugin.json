@@ -1,0 +1,20 @@
+{
+  "$comment": "QB Gate 扩展中心接入约定。核心以 install_method=connect 接入本程序：只定位、启动、停止、打开面板，不下载、不编译、不复制源码。",
+  "id": "codex-egress",
+  "name": "Codex 出站与换出口（ccodex 引擎）",
+  "kind": "application",
+  "clients": ["codex"],
+  "license": "GPL-3.0",
+  "upstream": "https://github.com/gylive/ccodex-sleep-state",
+  "binary": "ccodex-sleep-state.exe",
+  "default_install_dir": "%LOCALAPPDATA%\\Programs\\ccodex-sleep-state",
+  "start": ["setup"],
+  "restore": ["restore"],
+  "version_probe": ["version"],
+  "listen": "127.0.0.1:17841",
+  "admin_url": "http://127.0.0.1:17841/admin/",
+  "data_dir_env": "CCODEX_STATE_HOME",
+  "takes_over": "~/.codex/config.toml（退出时恢复；被强制结束后用 restore）",
+  "mutually_exclusive_with": ["qb-gate official codex turn-state (OAuthPassthrough) router line"],
+  "stop_policy": "terminate process, then run `restore`; never stop an instance QB Gate did not start"
+}
