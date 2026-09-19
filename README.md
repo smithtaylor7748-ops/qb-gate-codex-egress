@@ -31,11 +31,13 @@
 
 ## 安装（Windows）
 
-1. 到本仓库 **Releases** 下载 `windows-amd64` 发布包（由 CI 构建），完整解压到
-   `%LOCALAPPDATA%\Programs\ccodex-sleep-state`（QB Gate 默认在这里找；放别处就在插件页指定
+1. **一键：** 打开 QB Gate（0.24.2 起）→ 扩展中心 → 「Codex 出站与换出口」→ **下载并安装（校验 SHA256）**。
+   它从本仓库 Releases 取 `windows-amd64` 包与 `SHA256SUMS`，边下边算 SHA-256 并核对，解压到
+   `%LOCALAPPDATA%\Programs\ccodex-sleep-state` 并登记 exe 位置。
+   **手动：** 自己到 Releases 下载发布包，完整解压到上面那个目录（放别处就在插件页指定
    `ccodex-sleep-state.exe` 的位置）。
-2. 打开 QB Gate → 扩展中心 → 「Codex 出站与换出口」→ **启动插件**。它会新开一个控制台窗口、
-   备份并接管 Codex 配置、起服务，并打开自己的网页面板（默认 `http://127.0.0.1:17841/admin/`）。
+2. 在同一页点 **启动插件**。它会新开一个控制台窗口、备份并接管 Codex 配置、起服务，
+   并打开自己的网页面板（默认 `http://127.0.0.1:17841/admin/`）。
 3. **重启 Codex、新建会话**（旧会话不会热切换）。在它的面板里配置订阅 / 代理 / 注入开关。
 4. 退出：在 QB Gate 点 **停止并恢复 Codex 配置**（结束进程 + 跑本程序的 `restore`），
    或到它的窗口按 **Ctrl+C**（走它自己的恢复流程）。**不要直接结束进程后不管** —— Codex 会留在
